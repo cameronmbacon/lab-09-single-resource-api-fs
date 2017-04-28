@@ -1,10 +1,10 @@
 'use strict';
 
 const debug = require('debug')('http:storage');
-const Promise = require('bluebird');
-const fs = Promise.promisifyAll(require('fs'), {suffix: 'Prom'});
-const mkdirp = require('mkdirp');
-const del = require('del');
+// const Promise = require('bluebird');
+// const fs = Promise.promisifyAll(require('fs'), {suffix: 'Prom'});
+// const mkdirp = require('mkdirp');
+// const del = require('del');
 
 const storage = {};
 

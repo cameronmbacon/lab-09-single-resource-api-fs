@@ -29,13 +29,14 @@ module.exports = function(router) {
 
   router.post('/api/pokemon', function(req, res) {
     debug('POST /api/pokemon');
-    console.log(req.body);
     try {
       let pokemon = new Pokemon(req.body.name, req.body.type);
-      storage.createPokemon('pokemon', pokemon);
-      res.writeHead(201, {'Content-Type': 'text/plain'});
-      res.write(JSON.stringify(pokemon));
-      res.end();
+      storage.createPokemon('pokemon', pokemon)
+      .then(newPokemon => {
+        res.writeHead(201, {'Content-Type': 'application/json'});
+        res.write(JSON.stringify(newPokemon));
+        res.end();
+      });
     } catch(err) {
       console.error(err);
       res.writeHead(400, {'Content-Type': 'text/plain'});
